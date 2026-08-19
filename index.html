@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- =========================================
+         SEO & META TAGS
+         ========================================= -->
+    <title>NEXORA BATTLE | Official Esports Gaming App</title>
+    <meta name="description" content="Download NEXORA BATTLE, the ultimate next-gen esports gaming platform. Join live tournaments, play fair with advanced anti-cheat, and win real cash rewards. Get the official APK now!" />
+    <meta name="keywords" content="NEXORA BATTLE, Nexora Battle APK, Nexora Esports, Nexora gaming tournament, Nexora app download, play Nexora, Nexora System, Free Fire tournament app" />
+    <meta name="author" content="Nexora System" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English">
+    
+    <!-- Open Graph & Twitter Previews -->
+    <meta property="og:title" content="NEXORA BATTLE | Official Esports Gaming App" />
+    <meta property="og:description" content="Download NEXORA BATTLE, the ultimate next-gen esports gaming platform. Join live tournaments and win rewards." />
+    <meta property="og:image" content="https://i.ibb.co/qYqJbBdH/file-00000000f1707230b4525f67e79861f7.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://i.ibb.co/qYqJbBdH/file-00000000f1707230b4525f67e79861f7.png" />
+
+    <!-- Google Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "NEXORA BATTLE",
+      "operatingSystem": "ANDROID",
+      "applicationCategory": "GameApplication",
+      "image": "https://i.ibb.co/qYqJbBdH/file-00000000f1707230b4525f67e79861f7.png",
+      "offers": { "@type": "Offer", "price": "0.00", "priceCurrency": "USD" }
+    }
+    </script>
+    
+    <!-- Fonts & Icons (KEPT EXACTLY AS REQUESTED) -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    
+    <style>
+        /* =========================================
+           PREMIUM UI THEME VARIABLES
+           ========================================= */
+        :root {
+            --primary: #ff0022;
+            --primary-glow: rgba(255, 0, 34, 0.6);
+            --primary-dark: #8a0012;
+            --silver: #e2e8f0;
+            --bg-dark: #030001;
+            --glass-bg: rgba(20, 5, 8, 0.45);
+            --glass-border: rgba(255, 0, 34, 0.25);
+            --elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --smooth: cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        * { 
+            margin: 0; padding: 0; box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #fff;
+            overflow-x: hidden;
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        /* --- Ambient Animated Background Orbs --- */
+        .ambient-orbs {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            overflow: hidden; z-index: -1; pointer-events: none;
+        }
+        .orb {
+            position: absolute; border-radius: 50%; filter: blur(80px);
+            opacity: 0.4; animation: floatOrb 15s infinite alternate ease-in-out;
+            will-change: transform;
+        }
+        .orb-1 { width: 400px; height: 400px; background: #ff0022; top: -10%; left: -10%; }
+        .orb-2 { width: 300px; height: 300px; background: #8a0012; bottom: -10%; right: -5%; animation-delay: -5s; }
+        .orb-3 { width: 250px; height: 250px; background: #4a000d; top: 40%; left: 40%; animation-delay: -10s; }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.2); }
+        }
+
+        /* --- Logo --- */
+        .logo-wrap { padding: 40px 0 20px; display: flex; justify-content: center; }
+        .logo-main {
+            width: 120px; height: 120px; border-radius: 50%;
+            border: 2px solid transparent;
+            background: linear-gradient(var(--bg-dark), var(--bg-dark)) padding-box,
+                        linear-gradient(45deg, var(--primary), #fff) border-box;
+            transition: 0.5s var(--elastic); cursor: pointer;
+            box-shadow: 0 10px 30px var(--primary-glow);
+            object-fit: cover;
+        }
+        .logo-main:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3); }
+
+        /* --- Hero Section --- */
+        .hero { padding: 20px; text-align: center; }
+        .hero-container {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            max-width: 1150px; margin: 0 auto; gap: 40px;
+        }
+        .hero-content { width: 100%; display: flex; flex-direction: column; align-items: center; }
+        
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255, 0, 34, 0.1); border: 1px solid var(--primary);
+            padding: 8px 18px; border-radius: 50px; font-weight: 700;
+            font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--primary); margin-bottom: 20px; box-shadow: 0 0 15px rgba(255,0,34,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif; font-weight: 900;
+            font-size: clamp(2.8rem, 8vw, 4.5rem); line-height: 1.1;
+            background: linear-gradient(180deg, #ffffff 30%, #a3a3a3 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-transform: uppercase; letter-spacing: 1px;
+            filter: drop-shadow(0 5px 15px rgba(255, 0, 34, 0.4));
+            margin-bottom: 10px;
+        }
+        .hero p {
+            color: var(--silver); font-size: 1.3rem; font-weight: 600;
+            letter-spacing: 4px; text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8); margin-bottom: 30px;
+        }
+
+        /* --- Sleek Smartphone Mockup --- */
+        .phone-case {
+            width: 280px; height: 580px; margin: 20px auto;
+            background: #000; border: 12px solid #1a1a1a;
+            border-radius: 45px; overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 40px rgba(255, 0, 34, 0.3), inset 0 0 15px rgba(255,255,255,0.1);
+            position: relative;
+            animation: levitate 6s ease-in-out infinite;
+        }
+        .phone-case::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 33px; border: 2px solid rgba(255, 255, 255, 0.1); z-index: 10; pointer-events: none;
+        }
+        .notch {
+            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 120px; height: 25px; background: #1a1a1a;
+            border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; z-index: 11;
+            box-shadow: inset 0 -2px 5px rgba(255,255,255,0.05);
+        }
+        .notch::after {
+            content: ''; position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+            width: 8px; height: 8px; background: #0a0a0a; border-radius: 50%; border: 1px solid #333;
+        }
+        @keyframes levitate {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .slider-wrap { display: flex; height: 100%; transition: transform 0.8s var(--smooth); will-change: transform; }
+        .slider-wrap img { width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; }
+
+        /* PC Layout Adjustments */
+        @media(min-width: 992px) {
+            .hero-container { flex-direction: row; text-align: left; gap: 80px; justify-content: space-between; }
+            .hero-content { text-align: left; align-items: flex-start; max-width: 600px; }
+            .btn-box { align-items: flex-start; flex-direction: row; gap: 20px; }
+            .phone-case { margin: 0; animation: levitate-pc 6s ease-in-out infinite; }
+            @keyframes levitate-pc {
+                0%, 100% { transform: translateY(0) rotate(-4deg) perspective(1000px) rotateY(-15deg); }
+                50% { transform: translateY(-15px) rotate(-4deg) perspective(1000px) rotateY(-15deg); }
+            }
+        }
+
+        /* --- Premium Buttons & Old Shimmer Animation --- */
+        .btn-box { display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 380px; margin-top: 10px;}
+        
+        .btn-premium {
+            width: 100%; padding: 18px 25px; border-radius: 12px;
+            text-decoration: none; font-weight: 800; text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif; letter-spacing: 1px;
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            transition: 0.4s var(--elastic); font-size: 1.05rem; cursor: pointer;
+            position: relative; overflow: hidden; z-index: 1;
+        }
+        .btn-dl {
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary), #ff3355);
+            background-size: 200% auto; color: #fff; border: none;
+            box-shadow: 0 10px 25px var(--primary-glow), inset 0 2px 5px rgba(255,255,255,0.3);
+        }
+        .btn-dl:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 35px rgba(255, 0, 34, 0.8); }
+
+        /* Restored Shimmer Animation for Download Button */
+        .shimmer-btn { position: relative; overflow: hidden; }
+        .shimmer-btn::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transform: skewX(-25deg) translateX(-300%);
+            animation: shimmerEffect 3.5s infinite;
+            will-change: transform; z-index: 2; pointer-events: none;
+        }
+        @keyframes shimmerEffect {
+            0% { transform: skewX(-25deg) translateX(-300%); }
+            40% { transform: skewX(-25deg) translateX(300%); }
+            100% { transform: skewX(-25deg) translateX(300%); }
+        }
+
+        /* --- Bento Stats (Glassmorphism) --- */
+        .stats-bento { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 60px 20px 40px; max-width: 900px; margin: 0 auto; }
+        .stat-card {
+            background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border); padding: 35px 25px; border-radius: 20px;
+            transition: 0.5s var(--smooth); display: flex; flex-direction: column; justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); cursor: default; position: relative; overflow: hidden;
+        }
+        .stat-card::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,0,34,0.1) 0%, transparent 70%); opacity: 0; transition: 0.5s;
+        }
+        .stat-card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: 0 15px 40px var(--primary-glow); }
+        .stat-card:hover::before { opacity: 1; }
+        
+        .stat-card h2 { font-family: 'Orbitron', sans-serif; font-size: 2.8rem; font-weight: 900; color: #fff; line-height: 1; margin-bottom: 8px; z-index: 1;}
+        .stat-card p { font-size: 0.95rem; color: var(--silver); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; z-index: 1;}
+        .stat-card i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; text-shadow: 0 0 15px var(--primary); z-index: 1;}
+
+        /* --- Features Section --- */
+        .section-title {
+            text-align: center; font-family: 'Orbitron', sans-serif; margin: 0 20px 40px; 
+            color: #fff; letter-spacing: 3px; font-weight: 900; font-size: 2rem;
+            text-shadow: 0 0 20px var(--primary-glow);
+        }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; padding: 0 20px 60px; max-width: 1000px; margin: 0 auto; }
+        
+        .feat-card {
+            background: var(--glass-bg); backdrop-filter: blur(15px); border: 1px solid var(--glass-border);
+            padding: 30px 15px; border-radius: 18px; transition: 0.4s var(--elastic);
+            text-align: center; cursor: pointer; display: flex; flex-direction: column; align-items: center;
+        }
+        .icon-wrapper {
+            width: 60px; height: 60px; border-radius: 50%; background: rgba(255, 255, 255, 0.03);
+            display: flex; align-items: center; justify-content: center; margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.1); transition: 0.4s;
+        }
+        .feat-card i { font-size: 1.8rem; color: var(--silver); transition: 0.4s; }
+        .feat-card h4 { font-family: 'Orbitron', sans-serif; font-size: 0.95rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1px;}
+        
+        .feat-card:hover { transform: translateY(-10px); border-color: var(--primary); background: rgba(20, 5, 8, 0.8); }
+        .feat-card:hover .icon-wrapper { background: rgba(255,0,34,0.15); border-color: var(--primary); box-shadow: 0 0 20px var(--primary-glow); }
+        .feat-card:hover i { color: var(--primary); transform: scale(1.1); }
+
+        /* --- Connect With Us --- */
+        .connect-section { padding: 0 20px 80px; max-width: 900px; margin: 0 auto; text-align: center; }
+        .social-links-grid { display: flex; flex-direction: column; gap: 18px; align-items: center; }
+        @media(min-width: 768px) { .social-links-grid { flex-direction: row; justify-content: center; flex-wrap: wrap; } }
+        
+        .social-btn {
+            width: 100%; max-width: 320px; padding: 18px 20px; border-radius: 12px;
+            text-decoration: none; font-weight: 800; text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif; letter-spacing: 1px;
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            transition: all 0.4s var(--elastic); color: #fff; font-size: 0.95rem; border: none;
+            position: relative; overflow: hidden;
+        }
+        .social-btn i { font-size: 1.4rem; transition: 0.3s; }
+        .social-btn:hover { transform: translateY(-6px) scale(1.02); }
+        
+        .btn-wa { background: linear-gradient(135deg, #128C7E, #25D366); box-shadow: 0 10px 25px rgba(37, 211, 102, 0.2); }
+        .btn-wa:hover { box-shadow: 0 15px 35px rgba(37, 211, 102, 0.5); }
+        
+        .btn-yt { background: linear-gradient(135deg, #cc0000, #ff0000); box-shadow: 0 10px 25px rgba(255, 0, 0, 0.2); }
+        .btn-yt:hover { box-shadow: 0 15px 35px rgba(255, 0, 0, 0.5); }
+        
+        /* Dynamic Contact Button inside Connect Section */
+        .btn-custom { background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--silver); color: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        .btn-custom:hover { border-color: var(--primary); background: rgba(255,0,34,0.1); color: var(--primary); box-shadow: 0 15px 35px var(--primary-glow); }
+        .btn-custom.alt-style { border-color: var(--primary); color: var(--primary); background: rgba(255,0,34,0.05); }
+
+        /* --- Modal Popup (Glassmorphism) --- */
+        #featureModal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center;
+            z-index: 9999; padding: 20px; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+        }
+        .modal-content {
+            background: rgba(10, 2, 4, 0.85); border: 1px solid var(--primary); padding: 40px 30px;
+            border-radius: 20px; max-width: 420px; text-align: center;
+            animation: modalIn 0.5s var(--elastic); box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 30px var(--primary-glow);
+        }
+        @keyframes modalIn { from { transform: scale(0.8) translateY(20px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
+        .modal-content h3 { font-family: 'Orbitron', sans-serif; color: #fff; margin-bottom: 15px; font-weight: 800; font-size: 1.6rem; text-shadow: 0 0 10px var(--primary); }
+        .modal-content p { color: var(--silver); font-size: 1.1rem; line-height: 1.6; font-weight: 500; }
+        .close-btn { 
+            margin-top: 30px; padding: 14px 35px; background: transparent; color: #fff; 
+            border: 2px solid var(--primary); border-radius: 50px; font-weight: 700; font-size: 0.95rem;
+            font-family: 'Orbitron', sans-serif; cursor: pointer; transition: 0.3s; letter-spacing: 1px;
+        }
+        .close-btn:hover { background: var(--primary); box-shadow: 0 0 20px var(--primary-glow); transform: scale(1.05); }
+
+        /* --- Footer --- */
+        footer { padding: 50px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px); }
+        .motivation-text {
+            font-family: 'Orbitron', sans-serif; font-size: 1.4rem; font-weight: 900; color: #fff;
+            text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; display: block;
+            text-shadow: 0 0 20px var(--primary-glow);
+        }
+        .footer-copy { color: #888; font-size: 0.9rem; font-weight: 600; margin-top: 10px; display: block; letter-spacing: 2px; text-transform: uppercase; }
+        .footer-copy span { color: var(--primary); }
+
+        /* Scroll Reveal Animation */
+        .reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.8s ease-out, transform 0.8s var(--smooth); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <!-- GPU Optimized Background Orbs -->
+    <div class="ambient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Header Logo -->
+    <header class="logo-wrap reveal active">
+        <img src="https://i.ibb.co/qYqJbBdH/file-00000000f1707230b4525f67e79861f7.png" alt="Nexora Battle Logo" class="logo-main" onerror="this.src='https://via.placeholder.com/120/000000/ff0022?text=NX';"/>
+    </header>
+
+    <main>
+        <!-- Premium Hero Section -->
+        <section class="hero reveal active">
+            <div class="hero-container">
+                <!-- Left Content -->
+                <div class="hero-content">
+                    <div class="hero-badge"><i class="bi bi-lightning-charge-fill"></i> NEXT-GEN ESPORTS PLATFORM</div>
+                    <h1>NEXORA BATTLE</h1>
+                    <p>Start Your Battle Today</p>
+                    
+                    <div class="btn-box">
+                        <!-- Restored Shimmer Class to Download Button -->
+                        <a href="https://www.mediafire.com/file/t3bmtupvib7ukmz/NEXORA+BATTLE.apk/file" download="NEXORA_BATTLE.apk" class="btn-premium btn-dl shimmer-btn">
+                            <i class="bi bi-cloud-arrow-down-fill"></i> Download APK
+                        </a>
+                        <!-- Contact Developer button removed from here as requested -->
+                    </div>
+                </div>
+
+                <!-- Right Phone Mockup -->
+                <div class="phone-case reveal">
+                    <div class="notch"></div>
+                    <div class="slider-wrap" id="slider">
+                        <!-- 8 Loop Images -->
+                        <img src="https://res.cloudinary.com/dzfekve9t/image/upload/v1782969639/Screenshot_20260702_101734_xwjfl8.jpg" alt="Gameplay 1"/>
+                        <img src="https://res.cloudinary.com/dzfekve9t/image/upload/v1782969638/Screenshot_20260702_101740_yimyqm.jpg" alt="Gameplay 2"/>
+                        <img src="https://res.cloudinary.com/dzfekve9t/image/upload/v1782969638/Screenshot_20260702_101749_psz1jz.jpg" alt="Gameplay 3"/>
+                        <img src="https://res.cloudinary.com/dzfekve9t/image/upload/v1782969638/Screenshot_20260702_101802_w4hmrj.jpg" alt="Gameplay 4"/>
+                        <img src="https://res.cloudinary.com/dzfekve9t/image/upload/v1782969639/Screenshot_20260702_101734_xwjfl8.jpg" alt="Gameplay 5"/>
+                        <img src="https://res.cloudinary.com/dzfekve9t/image/upload/v1782969638/Screenshot_20260702_101740_yimyqm.jpg" alt="Gameplay 6"/>
+                        <img src="https://res.cloudinary.com/dzfekve9t/image/upload/v1782969638/Screenshot_20260702_101749_psz1jz.jpg" alt="Gameplay 7"/>
+                        <img src="https://res.cloudinary.com/dzfekve9t/image/upload/v1782969638/Screenshot_20260702_101802_w4hmrj.jpg" alt="Gameplay 8"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- True Bento Stats Grid -->
+        <div class="stats-bento">
+            <div class="stat-card reveal" style="grid-column: span 2;">
+                <i class="bi bi-cloud-download"></i>
+                <h2 class="counter" data-target="5858">0</h2>
+                <p>Total Community Downloads</p>
+            </div>
+            <div class="stat-card reveal">
+                <i class="bi bi-person-bounding-box"></i>
+                <h2 class="counter" data-target="5213">0</h2>
+                <p>Active Players</p>
+            </div>
+            <div class="stat-card reveal">
+                <i class="bi bi-shield-check"></i>
+                <h2 class="counter" data-target="5565">0</h2>
+                <p>Trust Level</p>
+            </div>
+        </div>
+
+        <!-- Premium Core Features -->
+        <section class="reveal">
+            <h3 class="section-title">CORE FEATURES</h3>
+            <div class="features-grid">
+                
+                <!-- NEW FEATURE: Create Tournament -->
+                <div class="feat-card" onclick="showDetail('Create Tournament', 'Create Private tournaments and play.')">
+                    <div class="icon-wrapper"><i class="bi bi-diagram-3"></i></div>
+                    <h4>CREATE TOURNAMENT</h4>
+                </div>
+
+                <div class="feat-card" onclick="showDetail('Anti-Cheat', 'Advanced military-grade shield to block all types of hacks and ensures 100% fair play.')">
+                    <div class="icon-wrapper"><i class="bi bi-shield-lock"></i></div>
+                    <h4>ANTI-CHEAT</h4>
+                </div>
+                
+                <div class="feat-card" onclick="showDetail('Fast Payout', 'Withdraw your tournament winnings instantly to your UPI. 5-minute processing time.')">
+                    <div class="icon-wrapper"><i class="bi bi-wallet2"></i></div>
+                    <h4>FAST PAYOUT</h4>
+                </div>
+                
+                <div class="feat-card" onclick="showDetail('24/7 Support', 'Dedicated support team ready to help you on Telegram and App chat at any time.')">
+                    <div class="icon-wrapper"><i class="bi bi-headset"></i></div>
+                    <h4>24/7 SUPPORT</h4>
+                </div>
+                
+                <div class="feat-card" onclick="showDetail('Refer & Earn', 'Invite your squad and earn real cash rewards for every friend who joins the arena!')">
+                    <div class="icon-wrapper"><i class="bi bi-gift"></i></div>
+                    <h4>REFER & EARN</h4>
+                </div>
+                
+                <div class="feat-card" onclick="showDetail('Leaderboard', 'Rise through the ranks and prove you are the king of the arena. Live tracking available.')">
+                    <div class="icon-wrapper"><i class="bi bi-trophy"></i></div>
+                    <h4>LEADERBOARD</h4>
+                </div>
+                
+                <div class="feat-card" onclick="showDetail('Free Entry', 'Daily practice matches with zero entry fee. Show your skills for free!')">
+                    <div class="icon-wrapper"><i class="bi bi-controller"></i></div>
+                    <h4>FREE ENTRY</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- Connect With Us Section -->
+        <section class="reveal connect-section">
+            <h3 class="section-title">CONNECT WITH US</h3>
+            <div class="social-links-grid">
+                <a href="https://whatsapp.com/channel/" target="_blank" class="social-btn btn-wa">
+                    <i class="bi bi-whatsapp"></i> JOIN WHATSAPP CHANNEL
+                </a>
+                
+                <a href="https://youtube.com/" target="_blank" class="social-btn btn-yt">
+                    <i class="bi bi-youtube"></i> SUBSCRIBE ON YOUTUBE
+                </a>
+                
+                <!-- Dynamic Contact Developer Button Moved Here -->
+                <a href="https://wa.me/923705263455" target="_blank" class="social-btn btn-custom" id="dynamicDevBtn">
+                    <i class="bi bi-chat-dots-fill"></i> <span>CONTACT DEVELOPER</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Glassmorphic Modal -->
+    <div id="featureModal">
+        <div class="modal-content">
+            <h3 id="modalTitle">Feature</h3>
+            <p id="modalDesc">Details...</p>
+            <button class="close-btn" onclick="closeDetail()">CLOSE MODAL</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <span class="motivation-text">Dominate The Arena Today</span>
+        <span class="footer-copy">DESIGNED BY <span>NEXORA SYSTEM</span> | &copy; 2026</span>
+    </footer>
+
+    <!-- Logic Scripts (Zero Lag) -->
+    <script>
+        // Modal Logic
+        function showDetail(title, desc) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            const modal = document.getElementById('featureModal');
+            modal.style.display = 'flex';
+        }
+        function closeDetail() {
+            document.getElementById('featureModal').style.display = 'none';
+        }
+
+        // 8-Screen Loop Slider
+        const slider = document.getElementById('slider');
+        let idx = 0;
+        setInterval(() => {
+            idx = (idx + 1) % 8;
+            slider.style.transform = `translateX(-${idx * 100}%)`;
+        }, 3000);
+
+        // Dynamic Developer Button text change (Moved to Connect Us Section)
+        const devBtn = document.getElementById('dynamicDevBtn');
+        const devBtnText = devBtn.querySelector('span');
+        const devIcon = devBtn.querySelector('i');
+        const options = [
+            { text: "CONTACT DEVELOPER", icon: "bi-chat-dots-fill", alt: false },
+            { text: "WANT YOUR OWN APP?", icon: "bi-magic", alt: true }
+        ];
+        let labelIdx = 0;
+        
+        setInterval(() => {
+            labelIdx = (labelIdx + 1) % options.length;
+            devBtnText.style.opacity = 0;
+            devIcon.style.opacity = 0;
+            
+            setTimeout(() => {
+                devBtnText.innerText = options[labelIdx].text;
+                devIcon.className = `bi ${options[labelIdx].icon}`;
+                if(options[labelIdx].alt) {
+                    devBtn.classList.add('alt-style');
+                } else {
+                    devBtn.classList.remove('alt-style');
+                }
+                devBtnText.style.opacity = 1;
+                devIcon.style.opacity = 1;
+            }, 300);
+        }, 4000);
+
+        // Scroll Reveal
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) entry.target.classList.add('active'); 
+            });
+        }, observerOptions);
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // High-Performance Counter Animation
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = +el.getAttribute('data-target');
+                    let current = 0;
+                    const increment = target / 60; 
+                    const update = () => {
+                        if (current < target) {
+                            current += increment;
+                            el.innerText = Math.ceil(current);
+                            requestAnimationFrame(update);
+                        } else {
+                            el.innerText = target;
+                        }
+                    };
+                    update();
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.counter').forEach(c => counterObserver.observe(c));
+    </script>
+
+    <!-- Anti DevTools Script (As Requested) -->
+    <script>
+        document.addEventListener("contextmenu", e => e.preventDefault());
+        document.addEventListener("keydown", function(e) {
+            if (
+                e.key === "F12" ||
+                (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key.toUpperCase())) ||
+                (e.ctrlKey && ["U","S"].includes(e.key.toUpperCase()))
+            ) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        (function () {
+            const threshold = 160;
+            setInterval(function () {
+                if (
+                    window.outerWidth - window.innerWidth > threshold ||
+                    window.outerHeight - window.innerHeight > threshold
+                ) {
+                    document.body.innerHTML = `
+                        <div style="
+                            display:flex; justify-content:center; align-items:center;
+                            height:100vh; background:#000; color:#ff0022;
+                            font-size:30px; font-family:'Orbitron', sans-serif;
+                            text-transform:uppercase; text-align:center; font-weight: 900;
+                            text-shadow: 0 0 20px rgba(255,0,34,0.5);
+                        ">
+                        Security Triggered <br/> Developer Tools Detected
+                        </div>`;
+                }
+            }, 1000);
+        })();
+    </script>
+</body>
+</html>
