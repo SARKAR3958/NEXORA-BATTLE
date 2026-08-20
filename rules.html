@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEXORA BATTLE | Match Rules</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    
+    <style>
+        /* =========================================
+           HIGH-PERFORMANCE UI THEME VARIABLES
+           ========================================= */
+        :root {
+            --primary: #ff0022;
+            --primary-glow: rgba(255, 0, 34, 0.5);
+            --primary-dark: #b30018;
+            --silver: #94a3b8;
+            --bg-dark: #050505;
+            --card-bg: rgba(15, 15, 20, 0.7);
+            --card-border: rgba(255, 0, 34, 0.15);
+            --elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --smooth: cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        * { 
+            margin: 0; padding: 0; box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* --- ZERO-LAG BACKGROUND --- */
+        .bg-grid {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+        
+        .ambient-orbs {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            overflow: hidden; z-index: -1; pointer-events: none;
+        }
+        .orb {
+            position: absolute; border-radius: 50%;
+            will-change: transform; animation: floatOrb 12s infinite alternate ease-in-out;
+        }
+        .orb-1 { width: 80vw; height: 80vw; max-width: 600px; max-height: 600px; background: radial-gradient(circle, rgba(255,0,34,0.12) 0%, transparent 70%); top: -10%; left: -10%; }
+        .orb-2 { width: 70vw; height: 70vw; max-width: 500px; max-height: 500px; background: radial-gradient(circle, rgba(138,0,18,0.15) 0%, transparent 70%); bottom: -10%; right: -5%; animation-delay: -5s; }
+
+        @keyframes floatOrb {
+            0% { transform: translate3d(0, 0, 0) scale(1); }
+            100% { transform: translate3d(50px, 50px, 0) scale(1.1); }
+        }
+
+        /* --- Global Reusables --- */
+        .section-container { max-width: 900px; margin: 0 auto; padding: 0 15px 60px; }
+        
+        /* --- Logo --- */
+        .logo-wrap { padding: 40px 0 20px; display: flex; justify-content: center; }
+        .logo-main {
+            width: 110px; height: 110px; border-radius: 20px;
+            background: #000; padding: 5px;
+            border: 1px solid var(--primary-glow);
+            transition: transform 0.4s var(--elastic); cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 0, 34, 0.2);
+            object-fit: cover;
+        }
+        .logo-main:hover { transform: translateY(-8px) scale(1.05); border-color: var(--primary); box-shadow: 0 15px 40px var(--primary-glow); }
+
+        .section-title {
+            text-align: center; font-family: 'Orbitron', sans-serif; margin-bottom: 30px; 
+            color: #fff; letter-spacing: 3px; font-weight: 900; font-size: 2.2rem;
+            text-shadow: 0 0 20px var(--primary-glow); text-transform: uppercase;
+        }
+
+        /* --- TABS SYSTEM --- */
+        .tabs-wrapper {
+            display: flex; 
+            justify-content: center; 
+            gap: 10px; 
+            margin-bottom: 40px;
+            flex-wrap: nowrap; /* Changed: Ab mobile me stack nahi hoga */
+            width: 100%;
+        }
+        .tab-btn {
+            background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1);
+            color: var(--silver); padding: 15px 20px; border-radius: 12px;
+            font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 700;
+            cursor: pointer; transition: all 0.3s ease; text-transform: uppercase;
+            letter-spacing: 1px; backdrop-filter: blur(8px); flex: 1; max-width: 300px;
+            text-align: center;
+        }
+        .tab-btn:hover {
+            border-color: rgba(255,0,34,0.5); color: #fff; transform: translateY(-3px);
+        }
+        .tab-btn.active {
+            background: linear-gradient(135deg, rgba(255,0,34,0.15) 0%, transparent 100%);
+            border-color: var(--primary); color: #fff;
+            box-shadow: 0 0 20px rgba(255,0,34,0.2), inset 0 0 10px rgba(255,0,34,0.1);
+        }
+
+        /* --- RULES CONTENT --- */
+        .tab-content { display: none; animation: fadeIn 0.4s ease; }
+        .tab-content.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .rules-list { list-style: none; display: flex; flex-direction: column; gap: 15px; }
+        .rules-list li {
+            background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05);
+            padding: 20px 25px; border-radius: 16px; border-left: 4px solid var(--primary);
+            display: flex; align-items: center; gap: 20px;
+            color: #fff; font-size: 1.15rem; font-weight: 600; line-height: 1.6;
+            transition: all 0.3s ease; backdrop-filter: blur(8px);
+        }
+        .rules-list li:hover { 
+            transform: translateX(8px); border-color: var(--primary); 
+            background: rgba(20, 5, 8, 0.9); box-shadow: 0 5px 15px rgba(255,0,34,0.1);
+        }
+        
+        .rules-list li i { 
+            font-size: 1.8rem; color: var(--primary); 
+            background: rgba(255,0,34,0.1); padding: 10px; border-radius: 12px;
+            border: 1px solid rgba(255,0,34,0.2);
+        }
+
+        .rules-list li.warning-rule {
+            background: rgba(255,0,34,0.1) !important; 
+            border: 1px solid var(--primary) !important;
+            border-left: 6px solid var(--primary) !important;
+            justify-content: center; text-align: center; color: var(--primary);
+            font-family: 'Orbitron', sans-serif; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 1px; font-size: 1rem; box-shadow: 0 0 20px rgba(255,0,34,0.2);
+            flex-direction: column; gap: 10px; padding: 25px;
+            align-items: center; /* Ensures icon is centered */
+        }
+        .rules-list li.warning-rule i {
+            background: transparent; border: none; padding: 0; font-size: 3rem; color: var(--primary);
+        }
+
+        /* --- MOBILE VIEW FIXES --- */
+        @media(max-width: 600px) {
+            /* Tabs side by side fix */
+            .tab-btn {
+                padding: 12px 5px; 
+                font-size: 0.8rem; 
+                letter-spacing: 0.5px;
+            }
+            .section-title { font-size: 1.8rem; }
+            
+            /* List items text alignment */
+            .rules-list li { font-size: 0.95rem; padding: 15px; align-items: flex-start;}
+            .rules-list li i { font-size: 1.5rem; padding: 8px; }
+            
+            /* Warning rule centering fix */
+            .rules-list li.warning-rule {
+                align-items: center; /* Ensures warning icon stays in center on mobile */
+                text-align: center;
+                padding: 20px 15px;
+            }
+        }
+
+        /* --- Footer --- */
+        footer { padding: 40px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); background: #020202; margin-top: 40px;}
+        .footer-copy { color: #555; font-size: 0.9rem; font-weight: 600; display: block; letter-spacing: 2px; text-transform: uppercase; }
+        .footer-copy span { color: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <!-- Zero Lag Background Elements -->
+    <div class="bg-grid"></div>
+    <div class="ambient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <!-- Header Logo -->
+    <header class="logo-wrap">
+        <img src="https://i.ibb.co/qYqJbBdH/file-00000000f1707230b4525f67e79861f7.png" alt="Nexora Battle Logo" class="logo-main" onerror="this.src='https://via.placeholder.com/110/000000/ff0022?text=NX';"/>
+    </header>
+
+    <main class="section-container">
+        <h1 class="section-title">MATCH RULES</h1>
+
+        <!-- Tabs Navigation -->
+        <div class="tabs-wrapper">
+            <button class="tab-btn active" onclick="openTab('normal-rules', this)">NORMAL MATCHES</button>
+            <button class="tab-btn" onclick="openTab('private-rules', this)">PRIVATE MATCHES</button>
+        </div>
+
+        <!-- Tab Content 1: Normal Matches -->
+        <div id="normal-rules" class="tab-content active">
+            <ul class="rules-list">
+                <li><i class="bi bi-shield-x"></i> NO PANEL NO HACK</li>
+                <li><i class="bi bi-stopwatch"></i> WAIT TIME 10 MIN</li>
+                <li><i class="bi bi-fire"></i> DONT USE FLASH FREEZE & GRENADE IN ANY LW / CS MATCH</li>
+                <li><i class="bi bi-person-slash"></i> DONT USE SONIA AND KLAA CHARACTER</li>
+                <li><i class="bi bi-ban"></i> HORSE IS BANNED FROM BR MATCHES</li>
+                <li class="warning-rule">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    <span class="text[8px]>⚠️ MUST READ ALL RULES AND ADMIN DECISION WILL FINAL ⚠️</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Tab Content 2: Private Matches -->
+        <div id="private-rules" class="tab-content">
+            <ul class="rules-list">
+                <li><i class="bi bi-phone"></i> 📲 ROOM ID/PASS UPLOAD BUTTON MATCH SE 5 MINUTES PEHLE OPEN HOGA AUR MATCH KE 10 MINUTES BAAD DISABLE HOJAYEGA. 10 MINUTES KE ANDAR ID/PASS DEIN</li>
+                <li><i class="bi bi-gear-wide-connected"></i> ⚙️ JO ROOM SETTINGS SET KI HAI ROUNDS,MODE, etc SAME WOHI ROOM BNAAYE OTHERWISE ADMIN DESCION WILL FINAL</li>
+                <li><i class="bi bi-clock-history"></i> 🕐 GIVE ROOM ID/PASS ON TIME</li>
+                <li><i class="bi bi-hourglass-split"></i> ⏳ OPPONENT WAIT TIME: 12 MINUTES</li>
+                <li><i class="bi bi-shield-x"></i> 🚫 NO PANEL • NO HACK</li>
+                <li><i class="bi bi-fire"></i> 💣 FLASH FREEZE & GRENADE USE NAHI KARNA</li>
+                <li><i class="bi bi-person-slash"></i> 🚫 KLAA & SONIA CHARACTER BANNED HAIN</li>
+                <li><i class="bi bi-camera-video"></i> 🎥 ANY ISSUE HO TO PEHLE ISSUE RECORD KAREIN, PHIR VIDEO PROOF ADMIN KO SEND KAREIN.</li>
+                <li class="warning-rule">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    <span class="text[8px]">⚠️ MUST READ ALL RULES AND ADMIN DECISION WILL FINAL ⚠️</span>
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <span class="footer-copy">DESIGNED BY <span>NEXORA SYSTEM</span> | &copy; 2026</span>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Tabs Logic Function
+        function openTab(tabId, btnElement) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            document.getElementById(tabId).classList.add('active');
+            btnElement.classList.add('active');
+        }
+
+        // Anti-DevTools Script
+        document.addEventListener("contextmenu", e => e.preventDefault());
+        document.addEventListener("keydown", function(e) {
+            if (
+                e.key === "F12" ||
+                (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key.toUpperCase())) ||
+                (e.ctrlKey && ["U","S"].includes(e.key.toUpperCase()))
+            ) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>
