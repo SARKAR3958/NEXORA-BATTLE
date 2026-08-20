@@ -351,7 +351,7 @@
             <div class="hero-container">
                 <!-- Left Content -->
                 <div class="hero-content">
-                    <div class="hero-badge"><i class="bi bi-crosshair"></i> NEXT-GEN ESPORTS PLATFORM</div>
+                    <div class="hero-badge"><i class="bi bi-crosshair"></i> PAKISTAN'S BEST TOURNAMENT APP</div>
                     <h1>NEXORA BATTLE</h1>
                     <p>Start Your Battle Today</p>
                     
@@ -569,40 +569,20 @@
         }, { threshold: 0.5 });
         document.querySelectorAll('.counter').forEach(c => counterObserver.observe(c));
     </script>
+<!-- Original Anti-DevTools Script -->
+   <script>
+    document.addEventListener("contextmenu", e => e.preventDefault());
 
-    <!-- Original Anti-DevTools Script -->
-    <script>
-        document.addEventListener("contextmenu", e => e.preventDefault());
-        document.addEventListener("keydown", function(e) {
-            if (
-                e.key === "F12" ||
-                (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key.toUpperCase())) ||
-                (e.ctrlKey && ["U","S"].includes(e.key.toUpperCase()))
-            ) {
-                e.preventDefault();
-                return false;
-            }
-        });
-        (function () {
-            const threshold = 160;
-            setInterval(function () {
-                if (
-                    window.outerWidth - window.innerWidth > threshold ||
-                    window.outerHeight - window.innerHeight > threshold
-                ) {
-                    document.body.innerHTML = `
-                        <div style="
-                            display:flex; justify-content:center; align-items:center;
-                            height:100vh; background:#000; color:#ff0022;
-                            font-size:30px; font-family:'Orbitron', sans-serif;
-                            text-transform:uppercase; text-align:center; font-weight: 900;
-                            text-shadow: 0 0 20px rgba(255,0,34,0.5);
-                        ">
-                        Security Triggered <br/> Developer Tools Detected
-                        </div>`;
-                }
-            }, 1000);
-        })();
-    </script>
+    document.addEventListener("keydown", function(e) {
+        if (
+            e.key === "F12" ||
+            (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key.toUpperCase())) ||
+            (e.ctrlKey && ["U","S"].includes(e.key.toUpperCase()))
+        ) {
+            e.preventDefault();
+            return false;
+        }
+    });
+</script>
 </body>
 </html>
