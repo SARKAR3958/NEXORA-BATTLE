@@ -2,15 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     
     <!-- SEO & META TAGS -->
+  
     <title>Legal & Help | NEXORA BATTLE</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    
-    <meta name="theme-color" content="#ff0022">
-    <meta property="og:title" content="Legal & FAQs | NEXORA BATTLE" />
-    <meta property="og:image" content="https://www.yourwebsite.com/applogo.png" />
+    <meta name="theme-color" content="#050505">
     
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -23,18 +21,16 @@
         :root {
             --primary: #ff0022;
             --primary-glow: rgba(255, 0, 34, 0.5);
-            --primary-dark: #b30018;
             --silver: #94a3b8;
             --bg-dark: #050505;
-            --card-bg: rgba(15, 15, 20, 0.7);
+            --card-bg: rgba(15, 15, 20, 0.75);
             --card-border: rgba(255, 0, 34, 0.15);
-            --elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
             --smooth: cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         * { 
             margin: 0; padding: 0; box-sizing: border-box; 
-            -webkit-tap-highlight-color: transparent;
+            -webkit-tap-highlight-color: transparent; /* Removes blue tap highlight on mobile */
             font-family: 'Rajdhani', sans-serif;
         }
 
@@ -45,7 +41,7 @@
             position: relative;
         }
 
-        /* --- ZERO-LAG BACKGROUND --- */
+        /* --- ZERO-LAG BACKGROUND (SAME AS BEFORE) --- */
         .bg-grid {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2;
             background-image: 
@@ -68,126 +64,151 @@
 
         @keyframes floatOrb {
             0% { transform: translate3d(0, 0, 0) scale(1); }
-            100% { transform: translate3d(50px, 50px, 0) scale(1.1); }
+            100% { transform: translate3d(30px, 30px, 0) scale(1.1); }
         }
 
-        /* --- Global Reusables --- */
-        .section-container { max-width: 1000px; margin: 0 auto; padding: 0 20px; min-height: 80vh;}
+        /* --- APP-LIKE HEADER --- */
+        .app-header {
+            position: sticky; top: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: center;
+            padding: 20px 20px; background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .back-btn {
+          position: absolute; /* Ye button ko left side par fix kar dega */
+    left: 15px;         /* Left se 20px ki space dega */
+            color: #fff; font-size: 1.5rem; text-decoration: none;
+            display: flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,0.05);
+            transition: 0.3s;
+        }
+        .back-btn:active { background: var(--primary); transform: scale(0.9); }
         
-        /* --- Logo --- */
-        .logo-wrap { padding: 40px 0 20px; display: flex; justify-content: center; }
-        .logo-main {
-            width: 90px; height: 90px; border-radius: 20px;
-            background: #000; padding: 5px;
-            border: 1px solid var(--primary-glow);
-            transition: transform 0.4s var(--elastic); cursor: pointer;
-            box-shadow: 0 10px 30px rgba(255, 0, 34, 0.2);
-            object-fit: cover;
-        }
-        .logo-main:hover { transform: translateY(-8px) scale(1.05); border-color: var(--primary); box-shadow: 0 15px 40px var(--primary-glow); }
+        .header-logo { width: 45px; height: 45px; border-radius: 12px; object-fit: cover; border: 1px solid var(--primary-glow); }
+        
+        .header-title { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; font-weight: 900; letter-spacing: 1px; }
 
-        /* --- Page Headers --- */
-        .page-title-box { text-align: center; margin-bottom: 40px; }
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(255, 0, 34, 0.08); border: 1px solid var(--primary);
-            padding: 8px 20px; border-radius: 50px; font-weight: 700;
-            font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase;
-            color: #fff; margin-bottom: 20px;
-            box-shadow: 0 0 20px rgba(255,0,34,0.15);
+        /* --- MOBILE SEGMENTED TABS --- */
+        .tabs-container {
+            padding: 20px 15px 5px; position: sticky; top: 70px; z-index: 99;
+            background: linear-gradient(180deg, rgba(5,5,5,0.9) 0%, transparent 100%);
         }
-        .hero-badge i { color: var(--primary); }
-        .page-title {
-            font-family: 'Orbitron', sans-serif; font-weight: 900;
-            font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.1;
-            background: linear-gradient(180deg, #ffffff 20%, #888888 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        .segment-control {
+            display: flex; background: rgba(255,255,255,0.04);
+            border-radius: 14px; padding: 5px; border: 1px solid var(--card-border);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+        .seg-btn {
+            flex: 1; padding: 12px 0; border: none; background: transparent;
+            color: var(--silver); font-family: 'Orbitron', sans-serif; font-weight: 700;
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+            border-radius: 10px; cursor: pointer; transition: all 0.3s var(--smooth);
+        }
+        @media(min-width: 400px) { .seg-btn { font-size: 0.85rem; } }
+        
+        .seg-btn.active {
+            background: var(--primary); color: #fff;
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        /* --- CONTENT AREA --- */
+        .main-content { padding: 15px; min-height: 70vh; }
+        
+        .page-heading {
+            font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 900;
+            text-align: center; margin: 10px 0 25px; color: #fff;
             text-transform: uppercase; letter-spacing: 2px;
+            text-shadow: 0 0 15px var(--primary-glow);
         }
 
-        /* --- Tabs Navigation --- */
-        .tabs-nav {
-            display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;
-        }
-        .tab-btn {
-            padding: 14px 30px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1);
-            background: var(--card-bg); color: var(--silver); font-family: 'Orbitron', sans-serif;
-            font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s ease; 
-            letter-spacing: 1px; backdrop-filter: blur(8px); text-transform: uppercase;
-        }
-        .tab-btn.active, .tab-btn:hover {
-            background: var(--primary); border-color: var(--primary); color: #fff;
-            box-shadow: 0 10px 25px var(--primary-glow); transform: translateY(-3px);
-        }
-
-        /* --- Content Areas --- */
-        .tab-content { 
-            display: none; animation: slideUp 0.5s var(--smooth); margin-bottom: 60px;
-        }
+        .tab-content { display: none; animation: fadeSlideUp 0.4s var(--smooth); }
         .tab-content.active { display: block; }
-        
-        @keyframes slideUp { 
-            from { opacity: 0; transform: translateY(20px); } 
+        @keyframes fadeSlideUp { 
+            from { opacity: 0; transform: translateY(15px); } 
             to { opacity: 1; transform: translateY(0); } 
         }
 
+        /* --- MOBILE OPTIMIZED CARDS --- */
         .content-card {
             background: var(--card-bg); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-            border: 1px solid var(--card-border); padding: 30px; border-radius: 24px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            border: 1px solid var(--card-border); padding: 25px 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
-        @media(min-width: 768px) { .content-card { padding: 50px; } }
 
         .content-card h3 {
-            color: #fff; font-family: 'Orbitron', sans-serif; font-size: 1.6rem;
-            margin: 30px 0 15px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,0,34,0.3);
-            text-transform: uppercase; font-weight: 900; letter-spacing: 1px;
+            color: #fff; font-family: 'Orbitron', sans-serif; font-size: 1.25rem;
+            margin: 25px 0 10px; padding-bottom: 8px; border-bottom: 1px dashed rgba(255,0,34,0.3);
+            text-transform: uppercase; font-weight: 900;
         }
         .content-card h3:first-child { margin-top: 0; }
         
-        .content-card p {
-            color: var(--silver); font-size: 1.1rem; line-height: 1.8; font-weight: 500; margin-bottom: 15px;
-        }
-        .content-card ul { margin-left: 20px; color: var(--silver); font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; font-weight: 500; }
-        .content-card li { margin-bottom: 10px; }
+        .content-card p { color: var(--silver); font-size: 1.05rem; line-height: 1.6; font-weight: 500; margin-bottom: 15px; }
+        .content-card ul { margin-left: 15px; color: var(--silver); font-size: 1.05rem; line-height: 1.6; font-weight: 500; }
+        .content-card li { margin-bottom: 8px; }
         .content-card li strong { color: #fff; }
 
-        /* --- Interactive FAQs Accordion --- */
+        /* --- MOBILE FRIENDLY FAQS --- */
         .faq-item {
-            background: rgba(10, 10, 15, 0.8); border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 16px; margin-bottom: 15px; overflow: hidden;
+            background: rgba(15, 15, 20, 0.8); border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px; margin-bottom: 12px; overflow: hidden;
             transition: all 0.3s ease;
         }
-        .faq-item:hover { border-color: rgba(255,0,34,0.4); box-shadow: 0 5px 20px rgba(255,0,34,0.1); }
-        .faq-item.active { border-color: var(--primary); }
+        .faq-item.active { border-color: var(--primary); background: rgba(20, 10, 12, 0.9); }
         
         .faq-question {
-            width: 100%; text-align: left; padding: 20px 25px; background: transparent;
+            width: 100%; text-align: left; padding: 18px 20px; background: transparent;
             border: none; color: #fff; font-family: 'Rajdhani', sans-serif;
-            font-size: 1.25rem; font-weight: 700; cursor: pointer;
-            display: flex; justify-content: space-between; align-items: center;
+            font-size: 1.1rem; font-weight: 700; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center; gap: 10px;
         }
-        .faq-question i { color: var(--primary); transition: transform 0.4s var(--elastic); font-size: 1.5rem; }
+        .faq-question i { color: var(--primary); transition: transform 0.4s ease; font-size: 1.2rem; }
         
         .faq-answer {
-            padding: 0 25px; max-height: 0; overflow: hidden;
+            padding: 0 20px; max-height: 0; overflow: hidden;
             transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.4s ease; 
-            color: var(--silver); font-size: 1.1rem; line-height: 1.7; opacity: 0;
+            color: var(--silver); font-size: 1rem; line-height: 1.6; opacity: 0;
         }
-        .faq-item.active .faq-answer { padding: 0 25px 25px; max-height: 500px; opacity: 1; }
+        .faq-item.active .faq-answer { padding: 0 20px 20px; max-height: 500px; opacity: 1; }
         .faq-item.active .faq-question i { transform: rotate(180deg); }
 
         /* --- Footer --- */
-        footer { padding: 40px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); background: #020202; margin-top: 40px;}
-        .motivation-text {
-            font-family: 'Orbitron', sans-serif; font-size: 1.2rem; font-weight: 900; color: #fff;
-            text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; display: block;
-        }
-        .footer-copy { color: #555; font-size: 0.9rem; font-weight: 600; display: block; letter-spacing: 2px; text-transform: uppercase; }
+        footer { padding: 30px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); background: #020202; margin-top: 20px;}
+        .footer-copy { color: #555; font-size: 0.85rem; font-weight: 600; display: block; letter-spacing: 2px; text-transform: uppercase; }
         .footer-copy span { color: var(--primary); }
-        
-        .reveal { opacity: 0; transform: translate3d(0, 40px, 0); transition: opacity 0.6s ease-out, transform 0.6s var(--smooth); }
-        .reveal.active { opacity: 1; transform: translate3d(0, 0, 0); }
+      /* --- NEW LOGO CSS --- */
+.new-logo {
+    width: 100px;           /* Logo ki chaurai (apne hisab se change kar sakte hain) */
+    height: 100px;          /* Logo ki lambai */
+    object-fit: cover;     /* Image ko dabne ya khichne se bachayega */
+    border-radius: 20px;   /* Asli Mobile App Icon jaisi shape */
+    background: #050505;   /* Image ke peeche dark background */
+    padding: 4px;          /* Border aur image ke darmiyan thora gap */
+    
+    /* Red Neon Border & Shadow */
+    border: 2px solid rgba(255, 0, 34, 0.7); 
+    box-shadow: 0 8px 25px rgba(255, 0, 34, 0.35); 
+    
+    /* Smooth Bouncy Animation */
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+}
+
+/* Hover or Touch Effect (Jab user click kare ya mouse laye) */
+.new-logo:hover, .new-logo:active {
+    transform: scale(1.1) translateY(-5px); /* Thora bada hoke upar uthega */
+    border-color: #ff0022;                  /* Pure red border */
+    box-shadow: 0 12px 35px rgba(255, 0, 34, 0.7); /* Glow bright ho jayega */
+}
+
+/* Agar aap isko perfectly center mein rakhna chahte hain kisi div ke andar */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 26px 0;
+}
     </style>
 </head>
 <body>
@@ -199,122 +220,106 @@
         <div class="orb orb-2"></div>
     </div>
 
-    <!-- Header Logo -->
-    <header class="logo-wrap reveal active">
-        <!-- Make sure to use your logo correct path -->
-        <a href="index.html">
-            <img src="applogo.png" alt="Nexora Battle Logo" class="logo-main" onerror="this.style.display='none';"/>
-        </a>
-    </header>
-
-    <main class="section-container reveal active">
+    <!-- APP-LIKE HEADER -->
+    <header class="app-header">
+        <a href="index.html" class="back-btn"><i class="bi bi-arrow-left"></i></a>
+        <div class="header-title">LEGAL & HELP</div>
         
-        <!-- Header Title -->
-        <div class="page-title-box">
-            <div class="hero-badge"><i class="bi bi-shield-lock-fill"></i> SUPPORT & LEGAL</div>
-            <h1 class="page-title" id="dynamicTitle">PRIVACY POLICY</h1>
+    </header>
+<div class="logo-container">
+    <img src="applogo.png" alt="Logo" class="new-logo" onerror="this.src='https://via.placeholder.com/45x45/000/ff0022?text=NB'"/>
+</div>
+    <!-- MOBILE SEGMENTED TABS -->
+    <div class="tabs-container">
+        <div class="segment-control">
+            <button class="seg-btn active" onclick="switchTab(event, 'privacy', 'Privacy Policy')">Privacy</button>
+            <button class="seg-btn" onclick="switchTab(event, 'terms', 'Terms & Rules')">Terms</button>
+            <button class="seg-btn" onclick="switchTab(event, 'faqs', 'FAQs & Help')">FAQs</button>
         </div>
+    </div>
 
-        <!-- TABS NAVIGATION -->
-        <div class="tabs-nav">
-           <button class="tab-btn" onclick="openTab(event, 'terms', 'TERMS & CONDITIONS')">Terms & Conditions</button>
-            <button class="tab-btn active" onclick="openTab(event, 'privacy', 'PRIVACY POLICY')">Privacy Policy</button>
-           
-            <button class="tab-btn" onclick="openTab(event, 'faqs', 'HELP & FAQS')">Help & FAQs</button>
-        </div>
+    <main class="main-content">
+        
+        <h1 class="page-heading" id="dynamicTitle">Privacy Policy</h1>
 
-        <!-- ==============================================
-             1. PRIVACY POLICY CONTENT
-             ============================================== -->
+        <!-- 1. PRIVACY POLICY -->
         <div id="privacy" class="tab-content active">
             <div class="content-card">
                 <h3>1. Data Collection</h3>
-                <p>Welcome to NEXORA BATTLE. We prioritize your privacy. When you register, we collect basic information such as your Email, In-Game UID, and Username to manage your tournament entries.</p>
+                <p>Welcome to NEXORA BATTLE. We prioritize your privacy. When you register, we collect basic information such as Email, UID, and Username.</p>
 
-                <h3>2. How We Use Your Information</h3>
-                <p>The collected data is exclusively used for:</p>
+                <h3>2. Data Usage</h3>
                 <ul>
-                    <li>Verifying your in-game identity for matchmaking.</li>
-                    <li>Processing prize pool distributions and withdrawals.</li>
-                    <li>Preventing fraud and multi-account abuse.</li>
+                    <li>Verifying your in-game identity.</li>
+                    <li>Processing fast withdrawals.</li>
+                    <li>Preventing multi-account abuse.</li>
                 </ul>
 
-                <h3>3. Security & Anti-Cheat</h3>
-                <p>NEXORA BATTLE uses advanced military-grade encryption. We do not sell your personal data to any third-party services. Our strict anti-cheat system monitors gameplay statistics to ensure 100% fair play.</p>
+                <h3>3. Security</h3>
+                <p>We use military-grade encryption. Your data is never sold. Our anti-cheat monitors gameplay to ensure 100% fair play.</p>
 
                 <h3>4. Account Deletion</h3>
-                <p>You can request account deletion at any time by contacting our support team via WhatsApp or Telegram. Upon deletion, all your associated data will be permanently removed from our servers within 7 days.</p>
+                <p>You can request data deletion anytime by contacting support. Data is permanently removed within 7 days.</p>
             </div>
         </div>
 
-        <!-- ==============================================
-             2. TERMS & CONDITIONS CONTENT
-             ============================================== -->
+        <!-- 2. TERMS & CONDITIONS -->
         <div id="terms" class="tab-content">
             <div class="content-card">
-                <h3>1. Acceptance of Terms</h3>
-                <p>By downloading and using the NEXORA BATTLE application, you agree to comply with all our terms and conditions. If you do not agree, please do not use our services.</p>
+                <h3>1. Acceptance</h3>
+                <p>By using the NEXORA BATTLE app, you agree to comply with all terms.</p>
 
-                <h3>2. User Conduct & Fair Play</h3>
+                <h3>2. Fair Play Rules</h3>
                 <ul>
-                    <li><strong>No Hacking:</strong> Use of aimbots, wallhacks, scripts, or any third-party modification tools will result in a permanent hardware ban.</li>
-                    <li><strong>Teaming Up:</strong> Teaming up in Solo matches is strictly prohibited and will lead to prize forfeiture.</li>
-                    <li><strong>Respect:</strong> Toxic behavior, abuse, or threats in the app's global chat will result in an instant mute or ban.</li>
+                    <li><strong>No Hacking:</strong> Aimbots/Scripts equal permanent hardware ban.</li>
+                    <li><strong>No Teaming:</strong> Teaming in Solo matches leads to zero prize.</li>
+                    <li><strong>Respect:</strong> Toxic chat behavior leads to mute/ban.</li>
                 </ul>
 
-                <h3>3. Tournaments & Withdrawals</h3>
-                <p>All tournament entry fees are final. Refunds will only be issued if a match is canceled by the administration. Withdrawal requests (UPI/Bank) are processed within 5-10 minutes. Minimum withdrawal limits apply as stated in the app.</p>
-
-                <h3>4. Changes to Terms</h3>
-                <p>Nexora System reserves the right to update these terms at any time. Users will be notified of any major changes via in-app notifications.</p>
+                <h3>3. Withdrawals</h3>
+                <p>Withdrawal requests are processed in 24 Hour. Minimum time 30-45 Mins.</p>
             </div>
         </div>
 
-        <!-- ==============================================
-             3. FAQS CONTENT (Interactive Accordion)
-             ============================================== -->
+        <!-- 3. FAQS / HELP -->
         <div id="faqs" class="tab-content">
-            <!-- FAQ 1 -->
             <div class="faq-item">
                 <button class="faq-question" onclick="toggleFAQ(this)">
-                    How do I join a tournament in Nexora Battle? 
+                    How to join matches? 
                     <i class="bi bi-chevron-down"></i>
                 </button>
                 <div class="faq-answer">
-                    <p>Simply download the APK, register your account, and add funds to your wallet. Go to the 'Upcoming Matches' tab, select your preferred match, and click 'Join'. Make sure your In-Game Name matches perfectly!</p>
+                    <p>Add funds to wallet, go to 'Upcoming Matches', select a match, and click 'Join'. Ensure your Game Name and UID matches perfectly!</p>
                 </div>
             </div>
             
-            <!-- FAQ 2 -->
             <div class="faq-item">
                 <button class="faq-question" onclick="toggleFAQ(this)">
-                    How long does it take to withdraw winning money?
+                    Withdrawal timing?
                     <i class="bi bi-chevron-down"></i>
                 </button>
                 <div class="faq-answer">
-                    <p>We pride ourselves on our Fast Payout system. Once you place a withdrawal request, the money is transferred to your account (UPI, Easypaisa, Jazzcash, etc.) within 5 to 10 minutes max.</p>
+                    <p>Money is transferred to your account to EASY PAISA,JAZZ CASH within 45-60 minutes max.</p>
                 </div>
             </div>
 
-            <!-- FAQ 3 -->
             <div class="faq-item">
                 <button class="faq-question" onclick="toggleFAQ(this)">
-                    What happens if someone is caught hacking?
+                    Anti-Cheat Ban system?
                     <i class="bi bi-chevron-down"></i>
                 </button>
                 <div class="faq-answer">
-                    <p>Our Advanced Anti-Cheat system automatically detects abnormal gameplay. Any player caught hacking, scripting, or using GFX tools will face a permanent account and device ban, and their wallet balance will be confiscated.</p>
+                    <p>Any player caught hacking or using GFX tools will face a permanent account ban, and their wallet balance will be zeroed.</p>
                 </div>
             </div>
 
-            <!-- FAQ 4 -->
             <div class="faq-item">
                 <button class="faq-question" onclick="toggleFAQ(this)">
-                    When will I get the Room ID and Password?
+                    Where is Room ID/Pass?
                     <i class="bi bi-chevron-down"></i>
                 </button>
                 <div class="faq-answer">
-                    <p>The Room ID and Password will be provided exactly 10 to 15 minutes before the match start time. You will receive a push notification, and you can also check it inside the specific match details page.</p>
+                    <p>Room ID and Password are given 5 minutes before the match start time via App Notification and in match details.</p>
                 </div>
             </div>
         </div>
@@ -323,75 +328,51 @@
 
     <!-- Footer -->
     <footer>
-        <span class="motivation-text">Dominate The Arena Today</span>
-        <span class="footer-copy">DESIGNED BY <span>NEXORA SYSTEM</span> | &copy; 2026</span>
+        <span class="footer-copy">DESIGNED BY <span>NEXORA BATTLE</span> &copy; 2026</span>
     </footer>
 
-    <!-- High-Performance Scripts -->
+    <!-- Scripts -->
     <script>
-        // Tab Navigation Logic
-        function openTab(evt, tabName, titleText) {
-            // Hide all tab contents
-            const tabContents = document.querySelectorAll(".tab-content");
-            tabContents.forEach(content => {
+        // Segmented Tab Logic
+        function switchTab(evt, tabId, titleText) {
+            // Hide all contents
+            document.querySelectorAll(".tab-content").forEach(content => {
                 content.classList.remove("active");
             });
 
-            // Remove active class from all buttons
-            const tabBtns = document.querySelectorAll(".tab-btn");
-            tabBtns.forEach(btn => {
+            // Remove active state from buttons
+            document.querySelectorAll(".seg-btn").forEach(btn => {
                 btn.classList.remove("active");
             });
 
-            // Show current tab and add active class to button
-            document.getElementById(tabName).classList.add("active");
+            // Activate chosen tab
+            document.getElementById(tabId).classList.add("active");
             evt.currentTarget.classList.add("active");
 
-            // Change Page Title Dynamically
+            // Update Heading
             document.getElementById('dynamicTitle').innerText = titleText;
+            
+            // Smooth scroll to top of content (Optional, useful for mobile)
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // FAQ Accordion Logic
+        // FAQ Logic
         function toggleFAQ(button) {
             const faqItem = button.parentElement;
             
-            // Close other open FAQs for a cleaner look
+            // Close others
             document.querySelectorAll('.faq-item').forEach(item => {
-                if (item !== faqItem) {
-                    item.classList.remove('active');
-                }
+                if (item !== faqItem) item.classList.remove('active');
             });
 
-            // Toggle the clicked FAQ
+            // Toggle current
             faqItem.classList.toggle('active');
         }
-
-        // Scroll Reveal
-        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -40px 0px" };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { 
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target); 
-                }
-            });
-        }, observerOptions);
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
     
     <!-- Anti-DevTools Script -->
     <script>
         document.addEventListener("contextmenu", e => e.preventDefault());
-        document.addEventListener("keydown", function(e) {
-            if (
-                e.key === "F12" ||
-                (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key.toUpperCase())) ||
-                (e.ctrlKey && ["U","S"].includes(e.key.toUpperCase()))
-            ) {
-                e.preventDefault();
-                return false;
-            }
-        });
     </script>
 </body>
 </html>
