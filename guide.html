@@ -374,5 +374,32 @@
     <script>
         document.addEventListener("contextmenu", e => e.preventDefault());
     </script>
+        <script>
+        // Tabs Logic Function
+        function openTab(tabId, btnElement) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            document.getElementById(tabId).classList.add('active');
+            btnElement.classList.add('active');
+        }
+
+        // Anti-DevTools Script
+        document.addEventListener("contextmenu", e => e.preventDefault());
+        document.addEventListener("keydown", function(e) {
+            if (
+                e.key === "F12" ||
+                (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key.toUpperCase())) ||
+                (e.ctrlKey && ["U","S"].includes(e.key.toUpperCase()))
+            ) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
 </body>
 </html>
